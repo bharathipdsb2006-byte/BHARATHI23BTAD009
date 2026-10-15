@@ -1,4 +1,3 @@
-```swift
 var prices: [String: Double] = [
     "Apple": 20.0,
     "Milk": 30.0,
@@ -15,18 +14,20 @@ for (item, price) in prices.sorted(by: { $0.key < $1.key }) {
 }
 
 print("Enter number of items to buy:")
-let count = Int(readLine()!) ?? 0
+let count = Int(readLine() ?? "") ?? 0
 
-for i in 1...count {
-    print("Enter item \(i) name:")
-    let item = readLine()!
+if count > 0 {
+    for i in 1...count {
+        print("Enter item \(i) name:")
+        let item = readLine() ?? ""
 
-    if let price = prices[item] {
-        cart.append(item)
-        total += price
-        print("\(item) added to cart")
-    } else {
-        print("Item not available")
+        if let price = prices[item] {
+            cart.append(item)
+            total += price
+            print("\(item) added to cart")
+        } else {
+            print("Item not available")
+        }
     }
 }
 
@@ -36,4 +37,3 @@ for item in cart {
 }
 
 print("Total Bill: ₹\(total)")
-```
